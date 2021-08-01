@@ -1,82 +1,161 @@
-//randomises a random name from the list
-randomNameP1 = ['Joe', 'Joey', 'Chipotle', 'Dorito', 'Baba', 'Boey', 'Cake', 'Samantha', 'Noodle'];
-let pickedRandomNameP1 = randomNameP1[Math.floor(Math.random() * 9 + 0)];
+//explains the rules of the game
+console.log("Welcome to the Dice Rolling Game. Roll the digital dice and compete against your friend to try and get the highest dice roll. If you roll a 2 your point will be doubled. The player with the most six's will get an additional 2 points at the end of the game." );
 
-//asks player 1 to input their name
+//asks the player 1 to enter a name
 let player1 = prompt ('Player 1: Enter your name');
-
-//if user enters nothing it will generate random name from list
+//asks the user to re-enter their name if nothing is entered
 if (player1 == ''){
-  console.log('Welcome ' + pickedRandomNameP1 + ' to the Dice Rolling Game!')
-}else{
-  console.log('Welcome ' + player1 + ' to the Dice Rolling Game!')
+console.log('That is an invalid input. Please enter a name');
+player1 = prompt('Player 1: Enter your name')
 }
-//randomises name from teh list
-randomNameP2 = ['Joe', 'Joey', 'Chipotle', 'Dorito', 'Baba', 'Boey', 'Cake', 'Samantha', 'Noodle'];
-let pickedRandomNameP2 = randomNameP2[Math.floor(Math.random() * 9 + 0)];
 
-//asks player 2 to input their name
+//asks player 2 to enter a name
 let player2 = prompt ('Player 2: Enter your name');
-
-//if user enters nothing it will generate random name from the list
-  if (player2 == ''){
-  console.log('Welcome ' + pickedRandomNameP2 + ' to the Dice Rolling Game!')
-  }else{
-  console.log('Welcome ' + player2 + ' to the Dice Rolling Game!')
+//asks the user to re-enter their name if nothing is entered
+if (player2 == ''){
+console.log('that is an invalid input. Please enter a name')
+player2 = prompt('Player 2: Enter your name')
 }
-//what the points start on
-pointPlayer1 = 0;
-pointPlayer2 = 0;
+//welcomes the user to the game
+console.log('Welcome ' + player1 + ' and ' + player2 + ' to the Dice Rolling Game!')
 
+let dice = [1, 2, 3, 4, 5, 6,]
+let length = dice.length
+rollP1 = Math.floor(Math.random() * length + 1)
+numberP1 = (dice[rollP1])
+rollP2 = Math.floor(Math.random() * length + 1)
+numberP2 = (dice[rollP2])
 
-//generates a random number from 1-6
-randomRollP1 = ['1', '2', '3', '4', '5', '6'];
-let rollP1 = randomRollP1[Math.floor(Math.random() * 6 + 0)];
+let pointP1 = 0
+let pointP2 = 0
+let luckyNumberP1 = 0
+let luckyNumberP2 = 0
+let round = 0
 
-randomRollP2 = ['1', '2', '3', '4', '5', '6'];
-let rollP2 = randomRollP2[Math.floor(Math.random() * 6 + 0)];
+var playerRound = prompt('How many rounds would you like to play?');
+while((isNaN(playerRound))||(playerRound < 1)||(playerRound == null)||(playerRound==' ')||(playerRound % 1 != 0)){
+  console.log('That is not a valid number. Please enter a number')
+  playerRound = prompt('How many rounds would you like to play?')
+}
 
-//starts a loop
-play();
-function play() {
 do{
-  //asks the user if they want to roll the dice
-let rollingP1 = prompt (player1 + ' Would you like to roll the dice?');
+rollP1 = Math.floor(Math.random() * length + 1)
+numberP1 = (dice[rollP1])
+rollP2 = Math.floor(Math.random() * length + 1)
+numberP2 = (dice[rollP2])
+
+var rollingP1 = prompt (player1 + ' would you like to roll the dice?');
 if (rollingP1 == 'yes'){
   console.log('Ok your roll is ' + rollP1 + '!');
-  pointPlayer1++
-}else{
-  console.log('Ok Goodbye!');
-}
-// asks the user if they want to roll the dice
-let rollingP2 = prompt (player2 + ' Would you like to roll the dice?');
-if (rollingP2 == 'yes'){
-  console.log('Ok! your roll is ' + rollP2 + '!');
-  pointPlayer2++
-}else{
-  //if the users type anything other than yes it will display the message
-  console.log('Ok Goodbye!')
-}
-//explains the differrence between the two dice rolls
-if (rollP1 > rollP2){
-let difference = rollP1 - rollP2
-console.log('The difference between your dice rolls is ' + difference + '!')
-}else if (rollP2 > rollP1){
-  let difference = rollP2 - rollP1
-  console.log('The difference between your dice rolls is ' + difference + '!')
-}else{
-  console.log('The difference between your dice rolls is 0!')
-}
-//ask the users if they want to play again, if 'yes' the loop starts again.
-let again = prompt('Do you want to play again?');
-if (again == 'yes') {
-play();
 
-//stops the game when 1 player hits 20
-} if (pointPlayer1 = 20){
-  console.log ('Congratulations ' + player1 + ' You Win! Better luck next time ' + player2 + ' you were ' )
+if(rollP1 == 1){
+  pointP1++
 }
-else if (pointPlayer2 = 20){
-  console.log ('Congratulations ' + player2 + ' You Win! Better luck next time ' + player1 + ' you were ' )
+if(rollP1 == 2){
+  console.log(player1 + 'got a 2! you get double points!')
+  pointP1++
+  pointP1++
+  pointP1++
+  pointP1++
 }
+if(rollP1 == 3){
+  pointP1++
+  pointP1++
+  pointP1++
 }
+if(rollP1 == 4){
+  pointP1++
+  pointP1++
+  pointP1++
+  pointP1++
+}
+if(rollP1 == 5) {
+  pointP1++
+  pointP1++
+  pointP1++
+  pointP1++
+  pointP1++
+}
+if(rollP1 == 6) {
+  pointP1++
+  pointP1++
+  pointP1++
+  pointP1++
+  pointP1++
+  pointP1++
+}
+}else if(rollingP1 == 'no'){
+  console.log('Ok thank you for playing!')
+  break;
+}else{
+  console.log('that is an invalid input. Please enter yes or no')
+  rollingPlayer1 = prompt('would you like to roll the dice: yes or no:')
+}
+
+var rollingP2 = prompt (player2 + ' would you like to roll the dice?');
+if (rollingP2 == 'yes'){
+  console.log('Ok your roll is ' + rollP2 + '!');
+
+if(rollP2 == 1){
+  pointP2++
+}
+if(rollP2 == 2){
+  console.log(player2 + 'got a 2! you get double points!')
+  pointP2++
+  pointP2++
+  pointP2++
+  pointP2++
+}
+if(rollP2 == 3){
+  pointP2++
+  pointP2++
+  pointP2++
+}
+if(rollP2 == 4){
+  pointP2++
+  pointP2++
+  pointP2++
+  pointP2++
+}
+if(rollP2 == 5) {
+  pointP2++
+  pointP2++
+  pointP2++
+  pointP2++
+  pointP2++
+}
+if(rollP2 == 6) {
+  pointP2++
+  pointP2++
+  pointP2++
+  pointP2++
+  pointP2++
+  pointP2++
+}
+}else if(rollingP2 == 'no'){
+  console.log('Ok thank you for playing!')
+  break;
+}else{
+  console.log('That is an invalid input. Please enter yes or no')
+  rollingPlayer2 = prompt('Would you like to roll the dice: yes or no:')
+}
+
+if(numberP1 < numberP2){
+  console.log(player2 + ' won this round!')
+}else if(numberP1 > numberP2){
+  console.log(player1 + ' won this round!')
+}
+round++
+console.log(player1 + ' has ' + pointP1 + ' points!')
+console.log(player2 + ' has ' + pointP2 + ' points!')
+}
+while(round < playerRound)
+
+if(pointP2 < pointP1){
+console.log(player1 + ' wins the game!')
+}
+else if(pointP2 > pointP1){
+  console.log(player2 + ' wins the game!')
+}
+console.log(player1 + ' got ' + pointP1 + ' points')
+console.log(player2 + ' got ' + pointP2 + ' points')
